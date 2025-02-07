@@ -1,59 +1,46 @@
 ﻿
-using static ExceptionHandling.ExceptionHG;
 
-namespace ExceptionHandling
+using FileHandling;
+using Newtonsoft.Json;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            try
-            {
-                Console.WriteLine("Enter the age:");
-                int age = Convert.ToInt32(Console.ReadLine());
+        // FileStream fs = new FileStream("Sample.txt", FileMode.OpenOrCreate);
+        //StreamWriter sw = new StreamWriter(fs);
+        //sw.WriteLine("Welcome to File Concepts");
+        //sw.WriteLine("Second Line");
+        //Console.WriteLine("File created successfully");        
 
-                if (age < 18)
-                {
-                    throw new AgeException("Invalid Age.");
-                }
+        // StreamReader sr = new StreamReader(fs);
+        // Console.WriteLine(sr.ReadLine());
+        // Console.WriteLine(sr.ReadToEnd());
+        //string res = "";
+        //while ((res=sr.ReadLine()) != null)
+        //{
+        //    Console.WriteLine(res);
+        //}
 
-                Console.WriteLine("Enter the value of a:");
-                int a = Convert.ToInt32(Console.ReadLine());
+        //Account[] acc = new Account[3];
+        //for (int i = 0; i < acc.Length; i++)
+        //{
+        //    Console.WriteLine("Enter id,name,balance:");
+        //    int id = Convert.ToInt32(Console.ReadLine());
+        //    string name = Console.ReadLine();
+        //    int bal = Convert.ToInt32(Console.ReadLine());
+        //    acc[i] = new Account() { Accid = id, AccName = name, AccBalance = bal };
 
-                Console.WriteLine("Enter the value of b:");
-                int b = Convert.ToInt32(Console.ReadLine());
-                int c = a / b;
-                Console.WriteLine(c);
-                int[] ar = new int[5];
-                for (int i = 0; i < 5; i++)
-                {
-                    Console.WriteLine(ar[i]);
-                }
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (AgeException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
+        //}
+        Account acc = new Account() { Accid = 1, AccName = "Zara", AccBalance = 50000 };
+        string data = JsonConvert.SerializeObject(acc);
+        Console.WriteLine(acc);
+        FileStream fs = new FileStream("Sample.txt", FileMode.OpenOrCreate);
+        StreamWriter stw = new StreamWriter(fs);
+        stw.WriteLine(acc);
+        Console.WriteLine("File created successfully");
+        stw.Close();
+        fs.Close();
 
-                Console.WriteLine("End of the program");
-            }
-
-
-
-        }
     }
 }
