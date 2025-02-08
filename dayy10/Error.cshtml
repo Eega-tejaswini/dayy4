@@ -1,0 +1,9 @@
+﻿@page "{code?}"
+@using ReliabiltyDemo.Pages
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error @Model.StatusCode</h1>
+<p>Sorry,SOmething went wrong</p>
