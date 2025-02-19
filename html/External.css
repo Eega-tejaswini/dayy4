@@ -1,0 +1,12 @@
+body
+{
+
+background-image: url('backgrnd.jpg');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+text-align: center;
+text-transform: capitalize;
+
+}
+
